@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <title>Super Pencil</title>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+
+  <div id="toolbar">
+    <div id="tools">
+      <button class="tool-btn active" data-tool="0">画笔</button>
+      <button class="tool-btn" data-tool="1">矩形</button>
+      <button class="tool-btn" data-tool="2">圆形</button>
+      <button class="tool-btn" data-tool="3">箭头</button>
+      <button class="tool-btn" data-tool="4">橡皮</button>
+    </div>
+    <div class="separator"></div>
+    <div id="colors">
+      <button class="color-btn active" data-color="#FF0000" style="background:#FF0000"></button>
+      <button class="color-btn" data-color="#00AAFF" style="background:#00AAFF"></button>
+      <button class="color-btn" data-color="#00CC00" style="background:#00CC00"></button>
+      <button class="color-btn" data-color="#FFAA00" style="background:#FFAA00"></button>
+      <button class="color-btn" data-color="#FFFFFF" style="background:#FFFFFF"></button>
+    </div>
+    <div class="separator"></div>
+    <button class="action-btn" id="undo-btn">撤销</button>
+    <button class="action-btn" id="clear-btn">清屏</button>
+  </div>
+
+  <div id="toast"></div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
