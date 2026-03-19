@@ -11,11 +11,24 @@
 
   <div id="toolbar">
     <div id="tools">
-      <button class="tool-btn active" data-tool="0">画笔</button>
-      <button class="tool-btn" data-tool="1">矩形</button>
-      <button class="tool-btn" data-tool="2">圆形</button>
-      <button class="tool-btn" data-tool="3">箭头</button>
-      <button class="tool-btn" data-tool="4">橡皮</button>
+      <button class="tool-btn active" data-tool="0" title="矩形">
+        <svg viewBox="0 0 18 18" fill="none"><rect x="3" y="4" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+      <button class="tool-btn" data-tool="1" title="箭头">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14L14 4"/><path d="M8 4h6v6"/></svg>
+      </button>
+      <button class="tool-btn" data-tool="2" title="画笔">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 2.5l3 3-9 9H3.5v-3z"/></svg>
+      </button>
+      <button class="tool-btn" data-tool="3" title="五角星">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M9 3l1.6 4.3 4.6.2-3.5 2.8 1.1 4.5L9 12.2l-3.8 2.6 1.1-4.5L2.8 7.5l4.6-.2z"/></svg>
+      </button>
+      <button class="tool-btn" data-tool="4" title="圆形">
+        <svg viewBox="0 0 18 18" fill="none"><ellipse cx="9" cy="9" rx="6.5" ry="5.5" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+      <button class="tool-btn" data-tool="5" title="橡皮">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 3.5l7 7-4 4-7-7z"/><path d="M5 16h11"/><path d="M3.5 10.5l4 4"/></svg>
+      </button>
     </div>
     <div class="separator"></div>
     <div id="colors">
@@ -26,8 +39,12 @@
       <button class="color-btn" data-color="#FFFFFF" style="background:#FFFFFF"></button>
     </div>
     <div class="separator"></div>
-    <button class="action-btn" id="undo-btn">撤销</button>
-    <button class="action-btn" id="clear-btn">清屏</button>
+    <button class="action-btn" id="undo-btn" title="撤销">
+      <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h7a4 4 0 010 8H9"/><path d="M7 5L4 8l3 3"/></svg>
+    </button>
+    <button class="action-btn" id="clear-btn" title="清屏">
+      <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h12"/><path d="M7 5V3h4v2"/><path d="M13 5l-.8 10H5.8L5 5"/><path d="M7.5 8v4M10.5 8v4"/></svg>
+    </button>
   </div>
 
   <div id="toast"></div>

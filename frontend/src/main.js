@@ -14,7 +14,7 @@ const colorBtns = document.querySelectorAll('.color-btn');
 
 // ---- State ----
 
-const TOOLS = ['draw', 'rect', 'circle', 'arrow', 'eraser'];
+const TOOLS = ['rect', 'arrow', 'draw', 'star', 'circle', 'eraser'];
 let currentToolIndex = 0;
 let currentColor = '#FF0000';
 let drawingMode = true;
@@ -131,6 +131,28 @@ function drawArrowShape(start, end, color) {
   ctx.stroke();
 }
 
+function drawStarStamp(pos, color) {
+  const cx = pos.x;
+  const cy = pos.y;
+  const outerR = 22;
+  const innerR = 9;
+  const spikes = 5;
+  const rot = -Math.PI / 2;
+
+  ctx.beginPath();
+  applyStroke(color, 3);
+  for (let i = 0; i < spikes * 2; i++) {
+    const r = i % 2 === 0 ? outerR : innerR;
+    const angle = rot + (i * Math.PI) / spikes;
+    const x = cx + r * Math.cos(angle);
+    const y = cy + r * Math.sin(angle);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+  ctx.stroke();
+}
+
 // ---- Render a single stroke item ----
 
 function renderItem(item) {
@@ -140,6 +162,7 @@ function renderItem(item) {
     case 'rect':    return drawRectShape(item.start, item.end, item.color);
     case 'circle':  return drawCircleShape(item.start, item.end, item.color);
     case 'arrow':   return drawArrowShape(item.start, item.end, item.color);
+    case 'star':    return drawStarStamp(item.pos, item.color);
   }
 }
 
@@ -173,6 +196,14 @@ function isFreeformTool() {
 
 canvas.addEventListener('mousedown', (e) => {
   if (!drawingMode) return;
+
+  if (currentTool() === 'star') {
+    const pos = getPos(e);
+    strokes.push({ type: 'star', pos, color: currentColor });
+    redraw();
+    return;
+  }
+
   isDrawing = true;
   startPos = getPos(e);
 
@@ -314,7 +345,7 @@ function setMode(isDrawingMode) {
     snapshot = null;
     clearAll();
     toolbar.classList.add('hidden');
-    showToast('穿透模式');
+    showToast('退出画笔');
   }
 }
 
@@ -331,17 +362,17 @@ EventsOn('clear', () => {
 document.addEventListener('keydown', (e) => {
   if (!drawingMode) return;
 
-  if (e.key === 'ArrowLeft') {
+  if (e.metaKey && e.key === 'z') {
+    e.preventDefault();
+    undo();
+  } else if (e.key === 'z' || e.key === 'Z') {
     e.preventDefault();
     currentToolIndex = (currentToolIndex - 1 + TOOLS.length) % TOOLS.length;
     updateToolUI();
-  } else if (e.key === 'ArrowRight') {
+  } else if (e.key === 'x' || e.key === 'X') {
     e.preventDefault();
     currentToolIndex = (currentToolIndex + 1) % TOOLS.length;
     updateToolUI();
-  } else if (e.metaKey && e.key === 'z') {
-    e.preventDefault();
-    undo();
   }
 });
 

@@ -15,10 +15,10 @@ static void handleFlags(NSEvent *event) {
 
 void startKeyMonitor(void) {
 	dispatch_async(dispatch_get_main_queue(), ^{
-		NSDictionary *opts = @{(__bridge id)kAXTrustedCheckOptionPrompt: @YES};
+		NSDictionary *opts = @{(__bridge id)kAXTrustedCheckOptionPrompt: @NO};
 		Boolean trusted = AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)opts);
 		if (!trusted) {
-			NSLog(@"[Super Pencil] Accessibility permission not granted yet – global hotkey won't work until enabled.");
+			NSLog(@"[Super Pencil] Accessibility permission not granted – open System Settings > Privacy & Security > Accessibility to allow.");
 		}
 
 		globalMonitor = [NSEvent addGlobalMonitorForEventsMatchingMask:NSEventMaskFlagsChanged

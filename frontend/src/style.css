@@ -59,13 +59,19 @@ html, body {
   color: rgba(255, 255, 255, 0.6);
   border: none;
   border-radius: 6px;
-  padding: 4px 10px;
-  font-size: 12px;
+  padding: 5px;
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
   outline: none;
-  font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tool-btn svg, .action-btn svg {
+  display: block;
+  width: 18px;
+  height: 18px;
 }
 
 .tool-btn:hover {
@@ -112,13 +118,13 @@ html, body {
   color: rgba(255, 255, 255, 0.8);
   border: none;
   border-radius: 6px;
-  padding: 4px 12px;
-  font-size: 12px;
+  padding: 5px;
   cursor: pointer;
   transition: background 0.15s;
   outline: none;
-  font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .action-btn:hover {
